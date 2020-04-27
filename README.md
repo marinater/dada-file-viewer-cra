@@ -15,11 +15,6 @@ In the project directory, you can run:
 
 - Generates the website using data from located in the 'build-scripts/DadaFileViewer.xlsx' file
 
-`now`
+### 'yarn deploy`
 
-- Deploys to server for preview
-
-`now --prod`
-
-- Deploys to production
-
+- Pushes changes to git and deploys to Vercel / Zeit
