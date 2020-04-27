@@ -1,0 +1,268 @@
+[
+    {
+        "title": "Aarti Vidhi",
+        "subtitle": "",
+        "apiBaseURL": "/api/aarti-vidhi",
+        "prevPagePath": "/",
+        "filterByTopics": false,
+        "filterByDate": false,
+        "selectableRoutes": [
+            {
+                "url": "/viewer/aarti-vidhi",
+                "title": "Aarti Vidhi"
+            },
+            {
+                "url": "/viewer/akram-vignan",
+                "title": "Akram Vignan"
+            },
+            {
+                "url": "/viewer/aptavani",
+                "title": "Aptavani"
+            },
+            {
+                "url": "/viewer/dada-vani",
+                "title": "Dada Vani"
+            },
+            {
+                "url": "/viewer/individual-pads",
+                "title": "Individual Pads"
+            },
+            {
+                "url": "/viewer/nodhpothi",
+                "title": "Nodhpothi"
+            },
+            {
+                "url": "/viewer/pads-by-cd",
+                "title": "Pads by CD"
+            }
+        ]
+    },
+    {
+        "title": "Akram Vignan",
+        "subtitle": "",
+        "apiBaseURL": "/api/akram-vignan",
+        "prevPagePath": "/",
+        "filterByTopics": false,
+        "filterByDate": false,
+        "selectableRoutes": [
+            {
+                "url": "/viewer/aarti-vidhi",
+                "title": "Aarti Vidhi"
+            },
+            {
+                "url": "/viewer/akram-vignan",
+                "title": "Akram Vignan"
+            },
+            {
+                "url": "/viewer/aptavani",
+                "title": "Aptavani"
+            },
+            {
+                "url": "/viewer/dada-vani",
+                "title": "Dada Vani"
+            },
+            {
+                "url": "/viewer/individual-pads",
+                "title": "Individual Pads"
+            },
+            {
+                "url": "/viewer/nodhpothi",
+                "title": "Nodhpothi"
+            },
+            {
+                "url": "/viewer/pads-by-cd",
+                "title": "Pads by CD"
+            }
+        ]
+    },
+    {
+        "title": "Aptavani",
+        "subtitle": "",
+        "apiBaseURL": "/api/aptavani",
+        "prevPagePath": "/",
+        "filterByTopics": false,
+        "filterByDate": false,
+        "selectableRoutes": [
+            {
+                "url": "/viewer/aarti-vidhi",
+                "title": "Aarti Vidhi"
+            },
+            {
+                "url": "/viewer/akram-vignan",
+                "title": "Akram Vignan"
+            },
+            {
+                "url": "/viewer/aptavani",
+                "title": "Aptavani"
+            },
+            {
+                "url": "/viewer/dada-vani",
+                "title": "Dada Vani"
+            },
+            {
+                "url": "/viewer/individual-pads",
+                "title": "Individual Pads"
+            },
+            {
+                "url": "/viewer/nodhpothi",
+                "title": "Nodhpothi"
+            },
+            {
+                "url": "/viewer/pads-by-cd",
+                "title": "Pads by CD"
+            }
+        ]
+    },
+    {
+        "title": "Dada Vani",
+        "subtitle": "",
+        "apiBaseURL": "/api/dada-vani",
+        "prevPagePath": "/",
+        "filterByTopics": false,
+        "filterByDate": false,
+        "selectableRoutes": [
+            {
+                "url": "/viewer/aarti-vidhi",
+                "title": "Aarti Vidhi"
+            },
+            {
+                "url": "/viewer/akram-vignan",
+                "title": "Akram Vignan"
+            },
+            {
+                "url": "/viewer/aptavani",
+                "title": "Aptavani"
+            },
+            {
+                "url": "/viewer/dada-vani",
+                "title": "Dada Vani"
+            },
+            {
+                "url": "/viewer/individual-pads",
+                "title": "Individual Pads"
+            },
+            {
+                "url": "/viewer/nodhpothi",
+                "title": "Nodhpothi"
+            },
+            {
+                "url": "/viewer/pads-by-cd",
+                "title": "Pads by CD"
+            }
+        ]
+    },
+    {
+        "title": "Individual Pads",
+        "subtitle": "",
+        "apiBaseURL": "/api/individual-pads",
+        "prevPagePath": "/",
+        "filterByTopics": true,
+        "filterByDate": false,
+        "selectableRoutes": [
+            {
+                "url": "/viewer/aarti-vidhi",
+                "title": "Aarti Vidhi"
+            },
+            {
+                "url": "/viewer/akram-vignan",
+                "title": "Akram Vignan"
+            },
+            {
+                "url": "/viewer/aptavani",
+                "title": "Aptavani"
+            },
+            {
+                "url": "/viewer/dada-vani",
+                "title": "Dada Vani"
+            },
+            {
+                "url": "/viewer/individual-pads",
+                "title": "Individual Pads"
+            },
+            {
+                "url": "/viewer/nodhpothi",
+                "title": "Nodhpothi"
+            },
+            {
+                "url": "/viewer/pads-by-cd",
+                "title": "Pads by CD"
+            }
+        ]
+    },
+    {
+        "title": "Nodhpothi",
+        "subtitle": "",
+        "apiBaseURL": "/api/nodhpothi",
+        "prevPagePath": "/",
+        "filterByTopics": false,
+        "filterByDate": false,
+        "selectableRoutes": [
+            {
+                "url": "/viewer/aarti-vidhi",
+                "title": "Aarti Vidhi"
+            },
+            {
+                "url": "/viewer/akram-vignan",
+                "title": "Akram Vignan"
+            },
+            {
+                "url": "/viewer/aptavani",
+                "title": "Aptavani"
+            },
+            {
+                "url": "/viewer/dada-vani",
+                "title": "Dada Vani"
+            },
+            {
+                "url": "/viewer/individual-pads",
+                "title": "Individual Pads"
+            },
+            {
+                "url": "/viewer/nodhpothi",
+                "title": "Nodhpothi"
+            },
+            {
+                "url": "/viewer/pads-by-cd",
+                "title": "Pads by CD"
+            }
+        ]
+    },
+    {
+        "title": "Pads by CD",
+        "subtitle": "",
+        "apiBaseURL": "/api/pads-by-cd",
+        "prevPagePath": "/",
+        "filterByTopics": false,
+        "filterByDate": false,
+        "selectableRoutes": [
+            {
+                "url": "/viewer/aarti-vidhi",
+                "title": "Aarti Vidhi"
+            },
+            {
+                "url": "/viewer/akram-vignan",
+                "title": "Akram Vignan"
+            },
+            {
+                "url": "/viewer/aptavani",
+                "title": "Aptavani"
+            },
+            {
+                "url": "/viewer/dada-vani",
+                "title": "Dada Vani"
+            },
+            {
+                "url": "/viewer/individual-pads",
+                "title": "Individual Pads"
+            },
+            {
+                "url": "/viewer/nodhpothi",
+                "title": "Nodhpothi"
+            },
+            {
+                "url": "/viewer/pads-by-cd",
+                "title": "Pads by CD"
+            }
+        ]
+    }
+]
