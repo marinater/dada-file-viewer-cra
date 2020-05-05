@@ -40,8 +40,11 @@ setTimeout(() => {
 
 class API {
 	data: DataJSON
+	filters: { [key: string]: string[]}
+
 	constructor(data: DataJSON){
 		this.data = data
+		this.filters = {}
 	}
 
 	get(category: string, params: {search: string, start: number, count:number, filters: string[]}): ResponseType {
@@ -65,7 +68,13 @@ class API {
 			})
 		}
 
-		return { data: out.slice(params.start, params.start + params.count), count: out.length, filters: [] }
+		if (!(category in this.filters)) {
+			const newFilters = new Set<string>()
+			this.data[category].forEach( elem => elem["Topics (Separate with dash)"].split('-').forEach( tag => tag && newFilters.add(tag)) )
+			this.filters[category] = Array.from(newFilters)
+		}
+
+		return { data: out.slice(params.start, params.start + params.count), count: out.length, filters: this.filters[category] }
 	}
 }
 
