@@ -12,12 +12,13 @@ import withFileViewer from 'layouts/withFileViewer'
 import pageMetas from './pageMeta.json'
 import { useStylesheet } from 'hooks/useStylesheet';
 import { useLocalStorage } from 'hooks/useLocalStorage';
+import { useAPI } from 'hooks/useAPI'
 import { withDefaultLayout, InjectedDefaultLayoutProps } from 'layouts/withDefaultLayout'
 import {List} from 'antd'
 
 const toSafeName= (str: string) => '/viewer/' + str.toLowerCase().replace(/ /g, '-')
 
-const Home: FC<InjectedDefaultLayoutProps> = ({ apiBaseURL }) => {
+const Home: FC<InjectedDefaultLayoutProps> = () => {
     return (
         <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', flexGrow: 1, flexShrink: 1, overflow: 'auto' }}>
             {

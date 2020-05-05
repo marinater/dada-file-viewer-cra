@@ -3,26 +3,13 @@ import { Pagination, Button, Tag, Select } from "antd"
 
 import useComponentSize from "@rehooks/component-size"
 // import _times from 'lodash.times'
-import useSWR from "swr"
 import Icon from "@ant-design/icons"
 
 import {useHistory, useLocation} from 'react-router-dom'
 import qs from 'query-string'
 
 import { withDefaultLayout, InjectedDefaultLayoutProps, OpenInOptions, PageMeta } from "./withDefaultLayout"
-
-const fetchJSON = (url: string) => {
-	return fetch(url).then(res => res.json())
-}
-
-// const verifyExists = (url: string) => {
-// 	return fetch(`/api/proxy?site=${url}`, {method: 'HEAD'})
-// 		.then(res => {
-// 			if (res.status === 200) return "primary" as const
-// 			else return "danger" as const
-// 		})
-// 		.catch(err => "ghost" as const)
-// }
+import { useAPI } from "hooks/useAPI"
 
 const handlePDFOpen = (openIn: OpenInOptions, url: string, newTab: boolean = false) => (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
 	console.log('clicked! ' + url + ' ' + openIn)
@@ -47,8 +34,8 @@ const handlePDFOpen = (openIn: OpenInOptions, url: string, newTab: boolean = fal
 	else
 		console.log(`Could not use option ${openIn} to open ${url}`)
 	
-    e.preventDefault()
-    e.stopPropagation()
+	e.preventDefault()
+	e.stopPropagation()
 }
 
 const NewTabIcon = () => (
@@ -68,18 +55,18 @@ const NewTabIcon = () => (
 	</svg>
 )
 
-const FileViewer: FC<InjectedDefaultLayoutProps> = ({ developerMode, query, openIn, language, apiBaseURL, filterByDate, filterByTopics }) => {
-    const location = useLocation()
-    const history = useHistory()
+const FileViewer: FC<InjectedDefaultLayoutProps> = ({ developerMode, query, openIn, language, pageMeta, filterByDate, filterByTopics }) => {
+	const location = useLocation()
+	const history = useHistory()
 
-    // DATA DISPLAY
+	// DATA DISPLAY
 	// -- PAGINATION
 	const ref = useRef(null)
 	const size = useComponentSize(ref)
 	const {height: listHeight} = size
 	const ITEMS_PER_PAGE = Math.floor(listHeight / ROW_HEIGHT) || 1
 	// const ITEMS_PER_PAGE = 30
-    // -- FILTERS
+	// -- FILTERS
 	const [currentFilters, setCurrentFilters] = useState<string[]>(query.filters || [])
 
 	const setPageWithFilters = (newFilters: string[]) => {
@@ -94,20 +81,25 @@ const FileViewer: FC<InjectedDefaultLayoutProps> = ({ developerMode, query, open
 	// -- DATA FETCHING
 	const [currentPage, setCurrentPage] = useState(parseInt(query.page || '1'))
 
-    const setPageWithURL = (pageNum: number) => {
-        const newQuery = {...query}
-        if (pageNum > 1)
-            newQuery.page = pageNum.toString()
-        else if ('page' in newQuery)
-            delete newQuery.page
-    
+	const setPageWithURL = (pageNum: number) => {
+		const newQuery = {...query}
+		if (pageNum > 1)
+			newQuery.page = pageNum.toString()
+		else if ('page' in newQuery)
+			delete newQuery.page
+	
 		history.replace({pathname: location.pathname, search: qs.stringify(newQuery, { arrayFormat:'separator', arrayFormatSeparator:'-'})})
 		setCurrentPage(pageNum)
-    }
+	}
 	const handlePageChange = (current: number) => setPageWithURL(current)
 
-	// -- LOADING INDICATORS
-	const {data: response} = useSWR<{data: DataTypeV2[], count: number, filters: string[]}>(`${apiBaseURL}?start=${(currentPage - 1) * ITEMS_PER_PAGE}&count=${ITEMS_PER_PAGE}&search=${query.search || ''}${currentFilters.map( v => `&filters=${v}`).join('')}`, fetchJSON)
+	const API = useAPI()
+	const response = API.get(pageMeta.title, {
+		search: query.search || '',
+		start: currentPage - 1,
+		count: ITEMS_PER_PAGE,
+		filters: currentFilters
+	})
 
 	// -- BOOKMARKS
 	// // const {storage: {bookmarks: bookmarksArray}, setStorage: setBookmarks} = useLocalStorage<{bookmarks: string[]}>({
@@ -115,7 +107,7 @@ const FileViewer: FC<InjectedDefaultLayoutProps> = ({ developerMode, query, open
 	// // }, '__useLocalStorage__bookmarks')
 	// // const bookmarks = new Set(bookmarksArray)
 
-    return (
+	return (
 		<>
 		{
 			filterByTopics && (
@@ -134,7 +126,6 @@ const FileViewer: FC<InjectedDefaultLayoutProps> = ({ developerMode, query, open
 		}
 		<div style={{ flexGrow: 1, flexShrink: 1, overflow: 'auto' }} ref={ref}>
 		{
-			// response && response.data.map( (rowData, index) => <RenderRow key={rowData.uuid} {...{rowData, language, openIn, rowHeight: ROW_HEIGHT, showTopics: filterByTopics, setBookmarks, isBookmarked: bookmarks.has(rowData['Title in English'])}}/> )
 			response && response.data.map(
 				(row, index) => (
 					<a key={row.uuid} href={row['File URL']} onClick={ e => e.preventDefault() }>

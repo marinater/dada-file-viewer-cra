@@ -1,7 +1,7 @@
 import path from 'path'
 import {SplitExcel} from './ExcelSplitter'
 import {ParseCSVs} from './ParseCSVs'
-import {GenerateAPI, GenerateJSON} from './Generate'
+import {GenerateJSON} from './Generate'
 import {SaveData} from './SaveData'
 
 const run = async() => {
@@ -17,12 +17,8 @@ const run = async() => {
     const pagesOutPath = path.resolve(__dirname, '../src/pageMeta.json')
     await GenerateJSON(data, pagesOutPath)
 
-    // GENERATE PAGES FROM DATA
-    const apiDirectory = path.resolve(__dirname, '../api')
-    await GenerateAPI(data, apiDirectory)
-
     // GENERATE JSON FROM DATA
-    const dataOutPath = path.resolve(__dirname, '../data/general2.json')
+    const dataOutPath = path.resolve(__dirname, '../public/data.json')
     await SaveData(data, dataOutPath)
 }
 

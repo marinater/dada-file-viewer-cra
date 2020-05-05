@@ -129,7 +129,7 @@ export const withDefaultLayout = (PageContent: FC<InjectedDefaultLayoutProps>, p
 					}
 				}
 			</Media>
-			<PageContent {...storage} apiBaseURL={pageMeta.apiBaseURL} filterByDate={pageMeta.filterByDate} filterByTopics={pageMeta.filterByTopics} query={query}/>
+			<PageContent {...storage} pageMeta={pageMeta} filterByDate={pageMeta.filterByDate} filterByTopics={pageMeta.filterByTopics} query={query}/>
 
 			<Drawer
 				title="Settings"
@@ -197,7 +197,7 @@ interface LocalStorageProps {
 }
 
 export interface InjectedDefaultLayoutProps extends LocalStorageProps {
-	apiBaseURL: string
+    pageMeta: PageMeta
 	filterByTopics: boolean
     filterByDate: boolean
     query: DefaultParams

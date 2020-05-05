@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from "react"
 import useEventListener from './useEventListener'
 
-type StorageType<T> = {
+export type StorageType<T> = {
 	[key in keyof T]: string | number | boolean | string[] | number[] | boolean[]
 }
 
