@@ -96,7 +96,7 @@ const FileViewer: FC<InjectedDefaultLayoutProps> = ({ developerMode, query, open
 	const API = useAPI()
 	const response = API.get(pageMeta.title, {
 		search: query.search || '',
-		start: currentPage - 1,
+		start: (currentPage - 1) * ITEMS_PER_PAGE,
 		count: ITEMS_PER_PAGE,
 		filters: currentFilters
 	})
