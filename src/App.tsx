@@ -39,7 +39,7 @@ const HomeWithLayout = withDefaultLayout(Home, {
 
 export const App = () => {
     const {storage: {prefersDarkMode: darkMode}, setStorage: setDarkModeStorage} = useLocalStorage({prefersDarkMode: true}, '__userDarkModeSetting__')
-    // useStylesheet(darkMode)
+    useStylesheet(darkMode)
 
     const darkModeProps = {darkMode, setDarkMode: (to: boolean) => setDarkModeStorage({prefersDarkMode: to})} 
     return <Router>
