@@ -112,7 +112,7 @@ export const withDefaultLayout = (PageContent: FC<InjectedDefaultLayoutProps>, p
 										subTitle={pageMeta.subtitle}
 										style={{ flexGrow: 0, flexShrink: 0, paddingBottom: 0 }}
 									/>
-									<h1 style={{ marginRight: 16, marginLeft: 16, whiteSpace: 'nowrap' }}> Dada File Viewer </h1>
+									<h1 style={{ marginRight: 16, marginLeft: 16, marginBottom: 0, whiteSpace: 'nowrap' }}> Dada File Viewer </h1>
 									<div style={{ flexGrow: 1, flexShrink: 1, padding: 16, paddingBottom: 0, minWidth: 300, maxWidth: 500, display: 'flex', flexDirection: 'row'}}>
 										<Input.Search
 											value={search}

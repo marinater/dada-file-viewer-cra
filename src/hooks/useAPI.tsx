@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import useEventListener from './useEventListener'
+import { useLocalStorage } from './useLocalStorage'
 
 const __useAPI__ = '__useAPI__'
 
-interface DataType {
+export interface DataType {
 	"Language": string,
 	"Book Type": string,
 	"Month": string,
@@ -41,17 +42,25 @@ setTimeout(() => {
 class API {
 	data: DataJSON
 	filters: { [key: string]: string[]}
+	bookmarks: DataType[]
 
-	constructor(data: DataJSON){
+	constructor(data: DataJSON, bookmarks: DataType[]){
 		this.data = data
+		this.bookmarks = bookmarks
 		this.filters = {}
 	}
 
-	get(category: string, params: {search: string, start: number, count:number, filters: string[]}): ResponseType {
+	get(category: string, params: {search: string, start: number, count:number, filters: string[]}, bookmarkedOnly=false): ResponseType {
 		if (!(category in this.data)) return { data: [], filters: [], count: 0 }
 
-		let out = this.data[category].map(e => ({...e}))
-		
+		let out: DataType[]
+		if (bookmarkedOnly)
+			out = this.bookmarks.filter(e => e["Book Type"] === category).map( e => ({...e}))
+		else
+			out = this.data[category].map(e => ({...e}))
+
+		// console.log(category)
+
 		if (params.search){
 			const search = params.search.toLowerCase().trim()
 			out = out.filter( e => e["Title in English"].toLowerCase().includes(search) || e['Title in Original Language'].toLowerCase().includes(search))
@@ -80,6 +89,14 @@ class API {
 
 export const useAPI = () => {
 	const [internalData, setInternalData] = useState(data)
+	const {storage: {bookmarks}, setStorage: setBookmarks} = useLocalStorage<{bookmarks: DataType[]}>({
+		bookmarks: []
+	}, '__useLocalStorage__bookmarks')
+
 	useEventListener(__useAPI__, () => setInternalData(data))
-	return new API(internalData)
+	return {
+		API: new API(internalData, bookmarks),
+		bookmarks,
+		setBookmarks: (newBookmarks: DataType[]) => setBookmarks({ bookmarks: newBookmarks})
+	}
 }

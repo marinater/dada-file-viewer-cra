@@ -17,3 +17,7 @@
 .ant-divider {
     background-color: #303030;
 }
+
+.ant-tag:last-child {
+    margin-right: 0;
+}

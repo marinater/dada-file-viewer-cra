@@ -12,7 +12,6 @@ import withFileViewer from 'layouts/withFileViewer'
 import pageMetas from './pageMeta.json'
 import { useStylesheet } from 'hooks/useStylesheet';
 import { useLocalStorage } from 'hooks/useLocalStorage';
-import { useAPI } from 'hooks/useAPI'
 import { withDefaultLayout, InjectedDefaultLayoutProps } from 'layouts/withDefaultLayout'
 import {List} from 'antd'
 

@@ -2,7 +2,7 @@ import { useState, useCallback, useEffect } from "react"
 import useEventListener from './useEventListener'
 
 export type StorageType<T> = {
-	[key in keyof T]: string | number | boolean | string[] | number[] | boolean[]
+	[key in keyof T]: string | number | boolean | string[] | number[] | boolean[] | {} | StorageType<T>
 }
 
 export const useLocalStorage = <T extends StorageType<T>>(defaultValues: T, sessionID: string = '__useLocalStorage__', override: boolean = false) => {

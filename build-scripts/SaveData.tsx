@@ -13,7 +13,7 @@ const SaveData = async(data: DataType[], outPath: string) => {
     const remapped: { [key: string]: RowType[]} = {}
 
     for ( const entry of data ){
-        remapped[entry.pageMeta['Page Title']] = entry.pageData.map( e => ({...e, uuid: uuidv4()}))
+        remapped[entry.pageMeta['Page Title']] = entry.pageData.map( e => ({...e, uuid: uuidv4(), "Book Type": entry.pageMeta['Page Title']}))
     }
     fs.writeFileSync(outPath, JSON.stringify(remapped, null, 4))
 }
